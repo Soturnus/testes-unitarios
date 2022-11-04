@@ -37,7 +37,9 @@ public class TrabalhadorService {
 
 	public List<Trabalhador> verTodos() {
 		logger.info("listando todos os trabalhadores...");
-		return repo.findAll();
+		List<Trabalhador> trabs = repo.findAll();
+		
+		return trabs;
 	}
 
 	public Trabalhador buscarUm(Long id) {
@@ -48,7 +50,7 @@ public class TrabalhadorService {
 	}
 
 	@SuppressWarnings("deprecation")
-	public Trabalhador editar(long id, TrabalhadorDTO dto) {
+	public Trabalhador editar(long id, Trabalhador dto) {
 		try {
 			Trabalhador trab = repo.getOne(id);
 			atualizarUsuario(trab, dto);
@@ -89,13 +91,28 @@ public class TrabalhadorService {
 		return null;
 	}
 	
-	private void atualizarUsuario(Trabalhador trabalhador, TrabalhadorDTO dto) {
+	public Integer horasTrabalhadas(Long id) {
+		try {
+			Optional<Trabalhador> trab = repo.findById(id);
+			
+			if(trab.isPresent()) {
+				logger.info("Trabalhador encontrado com id: {}", id);
+				return trab.get().horasTrabalhadas();
+			} 
+		} catch (EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException(id);
+		}
+		return null;
+		
+	}
+	
+	private void atualizarUsuario(Trabalhador trab, Trabalhador dto) {
 
-		trabalhador.setNome(dto.getNome());
-		trabalhador.setIdade(dto.getIdade());
-		trabalhador.setCpf(dto.getCpf());
-		trabalhador.setRendaDiaria(dto.getRendaDiaria());
-		trabalhador.setDiasTrabalhados(dto.getDiasTrabalhados());
+		trab.setIdade(dto.getIdade());
+		trab.setNome(dto.getNome());
+		trab.setCpf(dto.getCpf());
+		trab.setRendaDiaria(dto.getRendaDiaria());
+		trab.setDiasTrabalhados(dto.getDiasTrabalhados());
 	}
 }
 

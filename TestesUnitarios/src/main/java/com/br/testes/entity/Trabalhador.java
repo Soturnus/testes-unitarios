@@ -62,7 +62,6 @@ public class Trabalhador implements Serializable{
 		this.diasTrabalhados = diasTrabalhados;
 	}
 	
-	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

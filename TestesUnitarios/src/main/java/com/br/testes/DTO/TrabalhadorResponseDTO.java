@@ -28,4 +28,5 @@ public class TrabalhadorResponseDTO {
 	    		trabalhador.getDiasTrabalhados()
 	    	);
 	}
+
 }
