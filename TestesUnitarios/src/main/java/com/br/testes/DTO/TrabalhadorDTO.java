@@ -1,5 +1,7 @@
 package com.br.testes.DTO;
 
+import javax.validation.constraints.NotEmpty;
+
 import com.br.testes.entity.Trabalhador;
 
 import lombok.AllArgsConstructor;
@@ -15,10 +17,12 @@ import lombok.Setter;
 @Setter
 public class TrabalhadorDTO {
 	
+	@NotEmpty
 	private String nome;
 	
 	private Integer idade;
-
+	
+	@NotEmpty
 	private String cpf;
 	
 	private Double rendaDiaria;

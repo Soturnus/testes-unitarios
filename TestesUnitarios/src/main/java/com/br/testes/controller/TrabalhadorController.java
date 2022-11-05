@@ -41,6 +41,9 @@ public class TrabalhadorController {
 	public ResponseEntity<?> cadastrar(@RequestBody TrabalhadorDTO dto) {
 
 		try {
+			if(dto.getNome() == null || dto.getCpf() == null) {
+				return new ResponseEntity<>("Usuario ou CPF não podem estar vazios", HttpStatus.BAD_REQUEST);
+			}
 			if (ValidaCPF.isCPF(dto.getCpf())) {
 
 				Trabalhador trabalhador = service.cadastrarTrabalhador(dto);
@@ -68,10 +71,10 @@ public class TrabalhadorController {
 
 	@GetMapping(value = "/buscar/{id}")
 	public ResponseEntity<?> buscarPorId(@PathVariable Long id) {
-		Optional<Trabalhador> trab = repo.findById(id);
+		Trabalhador trab = service.buscarUm(id);
 
-		if (trab.isPresent()) {
-			return new ResponseEntity<>(TrabalhadorResponseDTO.transformaEmDTO(trab.get()), HttpStatus.OK);
+		if (trab != null) {
+			return new ResponseEntity<>(TrabalhadorResponseDTO.transformaEmDTO(trab), HttpStatus.OK);
 		}
 
 		return new ResponseEntity<>("Trabalhador não encontrado!", HttpStatus.NOT_FOUND);
