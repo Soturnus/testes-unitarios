@@ -1,2 +1,4 @@
 # testes-unitarios
 Guia Básico para apoio a testes unitários. 
+
+[![](https://mermaid.ink/img/pako:eNptjs0KwjAMx19l5Ly9QA_CRJ_AHXuJbWqHaysxRWTs3W0tqAeTy__jR8gKJlkCBW5JD-ORpZv2OnZlzuQS07gsw7Br-ojG_3bVl3Kiu7S4qhKMToi_8Mf-OfTudGwLPQTigLMtD60V0CCeAmlQRVrkqwYdt8JhlnR6RgNKOFMP-WZR6DDjhTG0cHsBDbBJAg?type=png)](https://mermaid.live/edit#pako:eNptjs0KwjAMx19l5Ly9QA_CRJ_AHXuJbWqHaysxRWTs3W0tqAeTy__jR8gKJlkCBW5JD-ORpZv2OnZlzuQS07gsw7Br-ojG_3bVl3Kiu7S4qhKMToi_8Mf-OfTudGwLPQTigLMtD60V0CCeAmlQRVrkqwYdt8JhlnR6RgNKOFMP-WZR6DDjhTG0cHsBDbBJAg)
