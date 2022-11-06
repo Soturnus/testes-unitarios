@@ -25,7 +25,11 @@ public class TrabalhadorService {
 	@Autowired
 	private TrabalhadorRepository repo;
 
-	public Trabalhador cadastrarTrabalhador(Trabalhador dto) {
+	public Trabalhador cadastrarTrabalhador(Trabalhador dto) throws Exception {
+		Optional<Trabalhador> trab = repo.findByCpf(dto.getCpf());
+		if (trab.isPresent()){
+			throw new Exception("Usuario com CPF: " + trab.get().getCpf() + " já cadastrado!");
+		}	
 		repo.save(dto);
 		logger.info("Novo trabalhador salvo com sucesso!");
 

@@ -38,9 +38,13 @@ public class TrabalhadorController {
 	private TrabalhadorRepository repo;
 
 	@PostMapping(value = "/cadastrar")
-	public ResponseEntity<?> cadastrar(@RequestBody TrabalhadorDTO dto) {
+	public ResponseEntity<?> cadastrar(@RequestBody TrabalhadorDTO dto) throws Exception {
 
 		try {
+			Optional<Trabalhador> trab = repo.findByCpf(dto.getCpf());
+			if (trab.isPresent()){		
+				return new ResponseEntity<>("CPF já cadastrado", HttpStatus.BAD_REQUEST);
+			}	
 			if(dto.getNome() == null || dto.getCpf() == null) {
 				return new ResponseEntity<>("Usuario ou CPF não podem estar vazios", HttpStatus.BAD_REQUEST);
 			}
