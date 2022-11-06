@@ -1,11 +1,16 @@
 # Guia Basico para Testes Unitários
 
-Guia Básico para apoio a testes unitários construido 
+Mas então o que é um teste unitário?? 
 
+Os testes de unitários são normalmente testes automatizados escritos e executados por desenvolvedores de software para garantir que uma parte isolada de um aplicativo (conhecida como “unidade”) atenda ao seu design e se comporte como pretendido.
+
+>Dica do Riva: "Durante a construção desse material, como tirei boa parte da cabeça acabei engalhando em algumas partes do teste, e foi justamente dai que eu percebi alguns vicios de praticas ruins que eu tenho, e outras pessoas podem ter, justamente por não ter o costume de escrever teste, não era o teste que estava errado, era o codigo, uma vez que eu sei que meu teste está bacana, ele FORÇA o desenvolvedor a usar direito os padrões de projeto" 
+
+<hr>
 <ln>
 <hr>
 
-> Geralmente eu penso em 3 coisas quando crio um teste, o que eu testarei "DADO", o que eu preciso testar "QUANDO", e o que eu espero dos testes "ENTÂO", 
+Geralmente eu penso em 3 coisas quando crio um teste, o que eu testarei "DADO", o que eu preciso testar "QUANDO", e o que eu espero dos testes "ENTÂO", 
 no inicio pode ser complicado pensar como testar metodos de forma unitarias mas se guardamos "Dado, Quando, Então" as coisas começam a ficar mais claras.
 Não economizar na nomenclatura dos testes, descreva ao maximo o que o teste está fazendo, e caso precise "perfumar" o teste na hora da execução, é possivel personalizar o nome que será exibido
 - Exemplos
