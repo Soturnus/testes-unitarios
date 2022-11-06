@@ -26,7 +26,11 @@ void deve_RetornarTrue_QuandoSomarCorretamente() {
 }
 ```
 
-
+<a href="https://imgur.com/4yiCMhJ"><img src="https://i.imgur.com/4yiCMhJ.png" title="source: imgur.com" style="width: 80%; height: 80%"/></a>
+  
+<a href="https://imgur.com/3V5Ave8"><img src="https://i.imgur.com/3V5Ave8.png" title="source: imgur.com" style="width: 80%; height: 80%"/></a>
+  
+  
 
 > ### Ciclo de Vida de Testes 
 > - @BeforeAll <br> 
