@@ -12,7 +12,6 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import com.br.testes.DTO.TrabalhadorDTO;
 import com.br.testes.entity.Trabalhador;
 import com.br.testes.repositories.TrabalhadorRepository;
 import com.br.testes.services.exeptions.DatabaseException;
@@ -26,13 +25,11 @@ public class TrabalhadorService {
 	@Autowired
 	private TrabalhadorRepository repo;
 
-	public Trabalhador cadastrarTrabalhador(TrabalhadorDTO dto) {
-		Trabalhador trab = new Trabalhador(dto.getNome(), dto.getIdade(), dto.getCpf(), dto.getRendaDiaria(),
-				dto.getDiasTrabalhados());
-		repo.save(trab);
+	public Trabalhador cadastrarTrabalhador(Trabalhador dto) {
+		repo.save(dto);
 		logger.info("Novo trabalhador salvo com sucesso!");
 
-		return trab;
+		return dto;
 	}
 
 	public List<Trabalhador> verTodos() {

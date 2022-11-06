@@ -6,6 +6,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+/**
+ * @author : Rivaldo Oliveira
+ * Testes Unitários
+ * @See https://github.com/Soturnus/testes-unitarios 
+ */
 class TesteUtilitarios {
 
 	@Nested

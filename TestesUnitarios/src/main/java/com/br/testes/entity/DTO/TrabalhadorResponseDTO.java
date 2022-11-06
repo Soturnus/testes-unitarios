@@ -1,4 +1,4 @@
-package com.br.testes.DTO;
+package com.br.testes.entity.DTO;
 
 import com.br.testes.entity.Trabalhador;
 

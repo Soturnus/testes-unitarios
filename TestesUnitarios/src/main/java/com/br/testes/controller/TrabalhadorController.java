@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.br.testes.DTO.TrabalhadorDTO;
-import com.br.testes.DTO.TrabalhadorResponseDTO;
+import com.br.testes.entity.DTO.TrabalhadorDTO;
+import com.br.testes.entity.DTO.TrabalhadorResponseDTO;
 import com.br.testes.entity.Trabalhador;
 import com.br.testes.repositories.TrabalhadorRepository;
 import com.br.testes.services.TrabalhadorService;
@@ -45,8 +45,9 @@ public class TrabalhadorController {
 				return new ResponseEntity<>("Usuario ou CPF não podem estar vazios", HttpStatus.BAD_REQUEST);
 			}
 			if (ValidaCPF.isCPF(dto.getCpf())) {
-
-				Trabalhador trabalhador = service.cadastrarTrabalhador(dto);
+				Trabalhador trabalhador = new Trabalhador(dto.getNome(), dto.getIdade(), dto.getCpf(), dto.getRendaDiaria(),
+						dto.getDiasTrabalhados());
+				service.cadastrarTrabalhador(trabalhador);
 
 				logger.info("\n Usuario cadastrado com sucesso: " + "\n nome: {}, \n cpf: {}", dto.getNome().toString(),
 						ValidaCPF.imprimeCPF(dto.getCpf()));
@@ -97,13 +98,12 @@ public class TrabalhadorController {
 	
 	@DeleteMapping(value = "/deletar/{id}")
 	public ResponseEntity<?> deletar(@PathVariable Long id){
-		Optional<Trabalhador> trabs = repo.findById(id);
-		
-		if(trabs.isPresent()) {
+		try {
 			service.deletar(id);
 			return new ResponseEntity<>("Trabalhador deletado dos arquivos!", HttpStatus.NO_CONTENT);
-		}
-		return new ResponseEntity<>("Trabalhador não encontrado!", HttpStatus.NOT_FOUND);
+		} catch (Exception e) {
+			return new ResponseEntity<>("Trabalhador não encontrado!", HttpStatus.NOT_FOUND);
+		}		
 	}
 	
 	@GetMapping(value = "/calcular-salario/{id}")

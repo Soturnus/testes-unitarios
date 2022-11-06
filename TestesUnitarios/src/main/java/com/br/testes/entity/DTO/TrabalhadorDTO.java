@@ -1,4 +1,4 @@
-package com.br.testes.DTO;
+package com.br.testes.entity.DTO;
 
 import javax.validation.constraints.NotEmpty;
 
@@ -29,7 +29,7 @@ public class TrabalhadorDTO {
 	
 	private Integer diasTrabalhados;
 	
-	public Trabalhador transformaParaObjeto() {
+	public Trabalhador transformaParaObjeto(TrabalhadorDTO dto) {
 		return new Trabalhador(this.nome, this.idade, this.cpf, this.rendaDiaria, this.diasTrabalhados);
 	}
 }
