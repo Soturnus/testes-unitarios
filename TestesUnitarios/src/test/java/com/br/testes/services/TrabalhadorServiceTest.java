@@ -43,10 +43,10 @@ class TrabalhadorServiceTest {
     	@Test
     	void deve_Cadastrar_Novo_Trabalhador() throws Exception {
     		//DADO
-    		final Trabalhador trab = new Trabalhador(1L, "Rivaldo", 26, "07081244459", 25.0, 20);	
+    		final Trabalhador trab = new Trabalhador(1L, "Rivaldo", 26, "07081244459", 25.0, 20);
+    		//QUANDO
     		given(repo.findByCpf(trab.getCpf())).willReturn(Optional.empty());
     		given(repo.save(trab)).willAnswer(invocation -> invocation.getArgument(0));
-    		//QUANDO
     		Trabalhador trabSalvo = service.cadastrarTrabalhador(trab);
     		//ENTAO
     		assertThat(trabSalvo).isNotNull();
@@ -57,12 +57,12 @@ class TrabalhadorServiceTest {
     	void deve_Lancar_Exception_Quando_CPF_Existir() throws Exception {
     		//DADO
     		final Trabalhador trab = new Trabalhador(1L, "Rivaldo", 26, "07081244459", 25.0, 20);
+    		//QUANDO
     		given(repo.findByCpf(trab.getCpf())).willReturn(Optional.of(trab));
-    		//QUANTO
+    		//ENTAO
     		assertThrows(Exception.class, () -> {
     			service.cadastrarTrabalhador(trab);
     		});
-    		//ENTAO
     		verify(repo, never()).save(any(Trabalhador.class));		
     	}
     }
