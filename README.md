@@ -11,13 +11,13 @@ Geralmente ficamos com uma confusão na mente sobre como testar, e qual tipo de 
 Respeitando algumas regras que o mesmo possui, criamos manualmente um dado a ser testado que no caso é um Trabalhador, verificamos pelo CPF se o mesmo já existe, porem estamos forçando o teste a nos dizer que não existe (willReturn(Optional.empty()) e podemos prosseguir;  <br><br>
 Depois estamos dizendo que queremos que o repositorio do teste nos informe o objeto Trabalhador que instaciamos no inicio, para então chamar o nosso metodo na classe de serviço provendo o objeto para verificar se as informações pertencem a uma mesma classe, para isso verificamos se o nosso objeto não veio Null, e que o objeto que pedimos para salvar no repositorio pertende a classe de Trabalhador, tal qual o objeto que instanciamos no inicio.  
 
-     <a href="https://imgur.com/4yiCMhJ"><img src="https://i.imgur.com/4yiCMhJ.png" title="Teste UNITARIO" style="width: 80%; height: 80%"/></a>
+     <a href="https://imgur.com/4yiCMhJ"><img src="https://i.imgur.com/4yiCMhJ.png" target="_blank" title="Teste UNITARIO" style="width: 80%; height: 80%"/></a>
      
 - Agora vamos analisar o teste de cadastro pelo Controller, aqui não estaremos fazendo teste unitario, e sim um teste de Integração, pois estamos emulando uma chamada no endpoint de cadastro e verificando qual resposta teremos, nesse tipo de teste podemos testar todos os aspectos de uma requisição: Body, Headers, Content-Type, Query etc.;  <br><br>
 No exemplo abaixo podemos ver que para cadastrar um Trabalhador, criamos um trabalhador e simulamos uma chamada no serviço dizendo que estamos enviando um objeto da classe Trabalhador; <br><br>
 Esperamos como retorno o nosso trabalhador instanciado no inicio, para então chamarmos um metodo da biblioteca Mockito que faz a simulação de uma chamada HTTP, estamos dizendo que na rota "/trabalhador/cadastrar" do nosso controller, estamos enviando um conteudo do tipo "application/json", e estamos convertendo nosso trabalhador pra JSON, e após a chamada ser realizada estamos esperando o StatusCode 201 CREATED
 
-     <a href="https://imgur.com/3V5Ave8"><img src="https://i.imgur.com/3V5Ave8.png" title="Teste INTEGRAÇÂO" style="width: 80%; height: 80%"/></a>
+     <a href="https://imgur.com/3V5Ave8"><img src="https://i.imgur.com/3V5Ave8.png" target="_blank" title="Teste INTEGRAÇÂO" style="width: 80%; height: 80%"/></a>
      
 ## O que é um teste de integração
 <blockquote =cite="https://kenzie.com.br/blog/teste-de-integracao/#:~:text=Teste%20de%20integração%20é%20quando,que%20está%20sendo%20integrado%20junto."> Teste de integração é quando os módulos (unidades de código) são testados em grupo para garantir que não haja nenhuma quebra naquilo que foi feito unitariamente e naquilo que está sendo integrado junto.</blockquote>
