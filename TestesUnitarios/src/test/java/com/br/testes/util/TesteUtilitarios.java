@@ -18,41 +18,41 @@ class TesteUtilitarios {
 		
 		@Test
 		void deve_retornarTrue_Quando_CPFforValido() {
-			//given 
+			//DADO 
 			String cpf = "13474562444";
-			//when
+			//QUANDO
 			boolean validado = ValidaCPF.isCPF(cpf);
-			//then
+			//ENTAO
 			assertTrue(validado);
 		}
 		
 		@Test
 		void deve_retornarFalse_Quando_TodosOsNumerosForemIguais() {
-			//given
+			//DADO 
 			String cpf = "77777777777";
-			//when
+			//QUANDO
 			boolean validado = ValidaCPF.isCPF(cpf);
-			//then
+			//ENTAO
 			assertFalse(validado);
 		}
 		
 		@Test
 		void deve_retornarFalse_Quando_possuirMaisde11Caracteres() {
-			//given 
+			//DADO  
 			String cpf = "134745624441";
-			//when
+			//QUANDO
 			boolean validado = ValidaCPF.isCPF(cpf);
-			//then
+			//ENTAO
 			assertFalse(validado);
 		}
 		
 		@Test
 		void deve_retornarFalse_Quando_possuirMenosde11Caracteres() {
-			//given 
+			//DADO 
 			String cpf = "1347456244";
-			//when
+			//QUANDO
 			boolean validado = ValidaCPF.isCPF(cpf);
-			//then
+			//ENTAO
 			assertFalse(validado);
 		}
 	}

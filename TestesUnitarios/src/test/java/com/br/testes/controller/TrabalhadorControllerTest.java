@@ -73,11 +73,12 @@ class TrabalhadorControllerTest {
 		
 		@Test
 		void deve_Cadastrar_Com_Sucesso() throws Exception {
+			//DADO
 			Trabalhador trabalhador = new Trabalhador(5L, "Rivaldo", 26, "07081244459", 25.0, 20);
-			
+			//QUANDO
 			given(service.cadastrarTrabalhador(any(Trabalhador.class)))
 			.willReturn(trabalhador);
-			
+			//ENTAO
 			this.mockMvc.perform(post("/trabalhador/cadastrar")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(trabalhador)))

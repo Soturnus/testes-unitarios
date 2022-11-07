@@ -1,12 +1,16 @@
 package com.br.testes.services;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Nested;
@@ -35,7 +39,7 @@ class TrabalhadorServiceTest {
     private TrabalhadorService service;
 	
     @Nested
-    class TesteServiceCadastro{
+    class TesteServiceCadastro {
     	@Test
     	void deve_Cadastrar_Novo_Trabalhador() throws Exception {
     		//DADO
@@ -63,15 +67,58 @@ class TrabalhadorServiceTest {
     	}
     }
 	
-	
-	//@Test
-	//BuscarTodos
-	
-	//@Test
-	//BuscarUm
-	
-	//@Test
-	//BuscarDeletar
+    @Nested
+    class TesteServiceConsulta {
+    	
+    	@Test
+    	void deve_Retornar_Todos() {
+    		//DADO
+    		List<Trabalhador> trabList = new ArrayList<>();
+    		trabList.add(new Trabalhador(1L, "Rivaldo", 26, "07081244459", 25.0, 20));
+    		trabList.add(new Trabalhador(2L, "Thomas", 28, "13474562444", 47.8, 18));
+    		trabList.add(new Trabalhador(3L, "Ayrton", 27, "22527433448", 51.2, 15));
+    		//QUANDO
+    		given(repo.findAll()).willReturn(trabList);
+    		List<Trabalhador> esperado = service.verTodos();
+    		//ENTAO
+    		assertEquals(esperado, trabList);   		
+    		
+    	}
+    	
+    	@Test
+    	void deve_Retornar_Um() {
+    		//DADO
+    		final Long id = 1L;
+    		final Trabalhador trabalhador = new Trabalhador(1L, "Rivaldo", 26, "07081244459", 25.0, 20);
+    		//QUANDO
+    		given(repo.findById(id)).willReturn(Optional.of(trabalhador));
+    		final Trabalhador esperado = service.buscarUm(id);
+    		//ENTAO
+    		assertThat(esperado).isNotNull();    		
+    	}
+    }
+    
+    @Nested
+    class testeServicoDeletar {
+    	
+    	/**
+    	 * Nesse caso verifiquei se o metodo foi executado
+    	 * a quantidade de vezes que foi chamado, 2x, ou seja 
+    	 * o repositorio identificou 2 chamadas para deletar o mesmo id com sucesso.
+    	 */
+    	@Test
+    	void deve_Deletar() {
+    		//DADO id = 1
+    		final Long id = 1L;
+    		//QUANDO eu executar 2 vezes
+    		service.deletar(id);
+    		service.deletar(id);
+    		//ENTAO verifique se o repositorio recebeu 2 requisições
+    		verify(repo, times(2)).deleteById(id);
+    	}
+    }
+}
+
 	
 	//@Test
 	//CalcularSalario
@@ -79,6 +126,4 @@ class TrabalhadorServiceTest {
 	//@Test
 	//CalcularHorasTrabalhadas
 	
-	
 
-}
