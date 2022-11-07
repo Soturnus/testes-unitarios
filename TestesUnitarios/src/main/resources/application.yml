@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: hr-user
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: teste
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format-sql: true
+server:
+  port: ${PORT:9080}
