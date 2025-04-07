@@ -24,6 +24,7 @@ jobs:
 
       - name: Build and run tests
         run: mvn clean verify --batch-mode --fail-at-end
+        working-directory: TestesUnitarios
 
       - name: Upload test reports
         if: always()
