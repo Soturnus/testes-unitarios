@@ -33,6 +33,6 @@ jobs:
           path: TestesUnitarios/target/surefire-reports
 
       - name: Submit dependency graph
-        uses: github/codeql-action/upload-sarif@v3
+        uses: advanced-security/maven-dependency-submission-action@v4
         with:
-          sarif_file: ./TestesUnitarios
+          repository: ./TestesUnitarios
